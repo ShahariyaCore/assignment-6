@@ -26,7 +26,7 @@ const Banner = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-center  items-center lg:justify-start gap-4 pt-4">
             
             <button className="px-6 py-3 rounded-full text-white font-medium 
               bg-gradient-to-r from-purple-600 to-pink-500 
