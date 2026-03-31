@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ cartItems, setActiveTab }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -8,9 +8,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
 
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-purple-600">
-          DigiTools
-        </h1>
+        <h1 className="text-2xl font-bold text-purple-600">DigiTools</h1>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
@@ -25,15 +23,22 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-4">
 
           {/* Cart Icon */}
-          <div className="relative p-2 rounded-full bg-gray-100 hover:bg-purple-100 cursor-pointer transition">
+          <div
+            className="relative p-2 rounded-full bg-gray-100 hover:bg-purple-100 cursor-pointer transition"
+            onClick={() => setActiveTab("cart")} // 🔥 Switch to Cart tab
+          >
             <i className="fa-solid fa-cart-shopping text-lg text-gray-700 hover:text-purple-600"></i>
-          
+
+            {/* Badge with cart count */}
+            {cartItems.length > 0 && (
+              <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-pink-600 rounded-full">
+                {cartItems.length}
+              </span>
+            )}
           </div>
 
           {/* Login */}
-          <button className="text-gray-700 hover:text-purple-600">
-            Login
-          </button>
+          <button className="text-gray-700 hover:text-purple-600">Login</button>
 
           {/* CTA */}
           <button className="bg-purple-600 text-white px-5 py-2 rounded-full hover:bg-purple-700 transition">
@@ -53,7 +58,6 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden mt-4 bg-white rounded-xl shadow-md p-6 space-y-4 text-center text-gray-700 font-medium">
-
           <p className="hover:text-purple-600 cursor-pointer">Products</p>
           <p className="hover:text-purple-600 cursor-pointer">Features</p>
           <p className="hover:text-purple-600 cursor-pointer">Pricing</p>
@@ -63,14 +67,19 @@ const Navbar = () => {
           <div className="flex flex-col items-center gap-4 pt-4">
 
             {/* Cart Icon Mobile */}
-            <div className="relative p-3 rounded-full bg-gray-100">
+            <div
+              className="relative p-3 rounded-full bg-gray-100 cursor-pointer"
+              onClick={() => setActiveTab("cart")} // 🔥 Mobile also switches to Cart
+            >
               <i className="fa-solid fa-cart-shopping text-xl text-gray-700"></i>
-              
+              {cartItems.length > 0 && (
+                <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-pink-600 rounded-full">
+                  {cartItems.length}
+                </span>
+              )}
             </div>
 
-            <button className="text-gray-700 hover:text-purple-600">
-              Login
-            </button>
+            <button className="text-gray-700 hover:text-purple-600">Login</button>
 
             <button className="px-6 py-3 rounded-full text-white font-medium 
               bg-gradient-to-r from-purple-600 to-pink-500 
