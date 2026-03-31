@@ -5,6 +5,7 @@ import Counter from './component/Counter'
 import ModelHeader from './component/modelHader'
 import Model from './component/Model'
 import Cart from './component/cart'
+import Step from './component/Step'
 
 const getModels = async () => {
   const response = await fetch('/models.json')
@@ -89,7 +90,10 @@ function App() {
     cartItems={cartItems} 
     setCartItems={setCartItems} 
   />
+
+ 
 )}
+      <Step />
     </>
   )
 }
