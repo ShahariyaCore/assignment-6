@@ -1,7 +1,7 @@
 import { use } from "react";
 import ModelCard from "./modelCard";
 
-const Model = ({ modelPromise, onAddToCart }) => {
+const Model = ({ modelPromise, onAddToCart, cartItems }) => {
   const models = use(modelPromise);
 
   return (
@@ -15,6 +15,7 @@ const Model = ({ modelPromise, onAddToCart }) => {
               key={model.id} 
               model={model} 
               onAddToCart={onAddToCart}   // 🔥 important
+              cartItems={cartItems}
             />
           ))}
         </div>

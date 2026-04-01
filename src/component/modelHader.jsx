@@ -2,7 +2,7 @@ const ModelHeader = () => {
   return (
     <>
       {/* Header */}
-      <div className="text-center mt-12 mb-12 space-y-4">
+      <div className="text-center mt-25 mb-2 space-y-4">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800">
           Premium Digital Tools
         </h1>

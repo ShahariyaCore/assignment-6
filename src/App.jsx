@@ -85,6 +85,7 @@ function App() {
         <Model 
           modelPromise={modelPromise} 
           onAddToCart={handleAddToCart}   // 🔥 pass function
+          cartItems={cartItems}
         />
       )}
 

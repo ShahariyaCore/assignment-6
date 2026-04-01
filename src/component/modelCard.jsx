@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const ModelCard = ({ model, onAddToCart }) => {
+const ModelCard = ({ model, onAddToCart, cartItems = [] }) => {
   const [isBuying, setIsBuying] = useState(false);
+  const isAdded = isBuying || cartItems.some((item) => item.id === model.id);
 
   const handleBuy = () => {
+    if (isAdded) return;
     setIsBuying(true);
-    toast.success("Added to cart!");
-    onAddToCart(model); // 🔥 send data to App
+    toast.success(`${model.name} added to cart!`);
+    onAddToCart(model); // send data to parent
   };
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300">
-      
       {/* Top Row */}
       <div className="flex justify-between items-center mb-4">
         <div className="text-2xl">{model.icon}</div>
@@ -39,18 +40,14 @@ const ModelCard = ({ model, onAddToCart }) => {
       </h3>
 
       {/* Description */}
-      <p className="text-gray-500 text-sm mb-4">
-        {model.description}
-      </p>
+      <p className="text-gray-500 text-sm mb-4">{model.description}</p>
 
       {/* Price */}
       <div className="mb-4">
         <span className="text-2xl font-bold text-gray-800">
           ${model.price}
         </span>
-        <span className="text-sm text-gray-400">
-          /{model.period}
-        </span>
+        <span className="text-sm text-gray-400">/{model.period}</span>
       </div>
 
       {/* Features */}
@@ -69,11 +66,12 @@ const ModelCard = ({ model, onAddToCart }) => {
       {/* Button */}
       <button
         onClick={handleBuy}
+        disabled={isAdded}
         className="w-full py-2.5 rounded-full text-white font-medium 
-        bg-gradient-to-r from-purple-600 to-pink-500 
-        hover:from-purple-700 hover:to-pink-600 transition"
+        bg-linear-to-r from-purple-600 to-pink-500 
+        hover:from-purple-700 hover:to-pink-600 transition disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {isBuying ? "Added to Cart" : "Buy Now"}
+        {isAdded ? "Added" : "Buy Now"}
       </button>
     </div>
   );
