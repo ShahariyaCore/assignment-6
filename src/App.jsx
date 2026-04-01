@@ -7,6 +7,7 @@ import Model from './component/Model'
 import Cart from './component/cart'
 import Step from './component/Step'
 import Prices from './component/Prices'
+import CTA from './component/Cta'
 
 const getModels = async () => {
   const response = await fetch('/models.json')
@@ -96,6 +97,7 @@ function App() {
 )}
       <Step />
       <Prices />
+      <CTA />
     </>
   )
 }
