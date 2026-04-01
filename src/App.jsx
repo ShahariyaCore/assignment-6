@@ -8,6 +8,7 @@ import Cart from './component/cart'
 import Step from './component/Step'
 import Prices from './component/Prices'
 import CTA from './component/Cta'
+import Footer from './component/Footer'
 
 const getModels = async () => {
   const response = await fetch('/models.json')
@@ -98,6 +99,7 @@ function App() {
       <Step />
       <Prices />
       <CTA />
+      <Footer />
     </>
   )
 }

@@ -9,9 +9,17 @@ const Banner = () => {
         <div className="space-y-6 text-center lg:text-left">
 
           {/* Badge */}
-          <div className="inline-flex items-center justify-center lg:justify-start gap-2 bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium px-5 py-2 rounded-full">
-            ✨ New: AI-Powered Tools Available
-          </div>
+          <div className="inline-flex items-center justify-center lg:justify-start gap-2 
+  bg-[#a095fe56] text-purple-600 text-sm font-medium px-5 py-2 rounded-full 
+  border border-purple-200 shadow-sm hover:shadow-md transition-all duration-300">
+
+  {/* Gradient Icon */}
+  <span className="w-4 h-4 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center"></span>
+
+  {/* Text */}
+  <span>New: AI-Powered Tools Available</span>
+</div>
+
 
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-black">
